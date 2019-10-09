@@ -68,9 +68,11 @@ set ts=3 "tab的空格数
 set cindent "C的自动缩进
 set autoindent "自动缩进
 set shiftwidth=3 "自动缩进空白字符个数
- let g:mkdp_auto_start = 1
- let g:mkdp_auto_open = 1
- let g:mkdp_auto_close = 1
+let g:mkdp_auto_start = 1
+let g:mkdp_auto_open = 1
+let g:mkdp_auto_close = 1
+let g:mkdp_path_to_chrome="/usr/bin/firefox"
+let g:mkdp_markdown_css=''
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -80,8 +82,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'iamcco/markdown-preview.vim'
-let g:mkdp_path_to_chrome="/usr/bin/firefox"
-let g:mkdp_markdown_css=''
+Plugin 'Yggdroot/LeaderF'
 call vundle#end()
 " filetype off
 filetype plugin indent on
