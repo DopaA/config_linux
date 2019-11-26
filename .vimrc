@@ -1,4 +1,3 @@
-
 " All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by
 " the call to :runtime you can find below.  If you wish to change any of those
 " settings, you should do it in this file (/etc/vim/vimrc), since debian.vim
@@ -49,13 +48,33 @@ syntax on
 "set hidden		" Hide buffers when they are abandoned
 "set mouse=a		" Enable mouse usage (all modes)
 
+"脚本测试
+function SetTimeOfDayColor()
+let currentHour = strftime("%H")
+if	currentHour < 6+0
+	let ncolorscheme = "darkblue"
+elseif currentHour < 12+0
+	let ncolorscheme="morning"
+elseif currentHour < 18+0
+	let ncolorscheme="shine"
+else
+	let ncolorscheme="morning"
+endif
+"结尾引号前加上空格，因为命令与值中间需要有一个空格
+execute "colorscheme " . ncolorscheme 
+endfunction
+call SetTimeOfDayColor()
+"脚本测试结束
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
 " personal configure
+set shiftwidth=3 
+set autoindent
 set nu
+set ruler " 右下角显示总行数和百分比
 set ts=3 "tab空格数
 
 let g:mkdp_auto_start = 1
@@ -64,6 +83,7 @@ let g:mkdp_auto_close = 1
 let g:mkdp_path_to_chrome="/opt/google/chrome/google-chrome"
 let g:mkdp_markdown_css=''
 set nocompatible
+set backspace=2
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
